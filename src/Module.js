@@ -49,11 +49,11 @@
   export function mapUnit(unit){
     if(unit.trim().toLowerCase() === 'celsius'){
         return 'C'
-    }else if(unit.trim().toLowerCase() === 'Kelvin'){
+    }else if(unit.trim().toLowerCase() === 'kelvin'){
         return 'K'
-    }else if (unit.trim().toLowerCase() === 'Fahrenheit'){
+    }else if (unit.trim().toLowerCase() === 'fahrenheit'){
         return 'F'
-    }else if (unit.trim().toLowerCase() === 'Rankine'){
+    }else if (unit.trim().toLowerCase() === 'rankine'){
         return 'R'
     }else 
         return 'Invalid'

@@ -45,11 +45,15 @@ import React, { Component } from 'react';
             const inputSplitArray = studentRecord.input.split(" ")
             console.log( inputSplitArray[0]);
             console.log( inputSplitArray[1]);
+            if(inputSplitArray.length  <2 ||!Number.isNaN( inputSplitArray[0])){
+              this.setState({correction : "Invalid"})
+            }else if (Number.isNaN(studentRecord.studentInputUnit)){
+              this.setState({correction : "Incorrect"})
+            }else{
             let Unit = mapUnit( inputSplitArray[1] )
             console.log("Unit"+ Unit)
             studentRecord.inputTemp= inputSplitArray[0]
-            
-            
+                  
             const result1  =  tryConvert(studentRecord.inputTemp, Unit)
             console.log("result1 "+ result1 )
             const result2=   tryConvert(studentRecord.studentInput, studentRecord.studentInputUnit)
@@ -59,6 +63,7 @@ import React, { Component } from 'react';
             }else{
               this.setState({correction : "InCorrect"})
             }
+          }
           }
   
     render() {
@@ -100,9 +105,10 @@ import React, { Component } from 'react';
                       
                       <input type="submit" class="btn btn-primary btn-block mt-4"  />
                   </form>
-                  <div>
+                  
+                    
                       <p>{this.state.correction} </p>
-                  </div>
+                  
                 </div>
             </div>
         </div>
