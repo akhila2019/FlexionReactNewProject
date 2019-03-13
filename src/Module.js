@@ -8,28 +8,38 @@
     }
     if (convert ==='K'){
         const output=  convertKtoC(input)
-        return Round(output)
+        return ceilNumber(output)
     }else if(convert === 'F'){
         const output= convertFtoC(input)
-        return Round(output)
+        return ceilNumber(output)
     }else if (convert === 'R'){
        const output= convertRtoC(input)
-       return Round(output)
+       return ceilNumber(output)
     }else 
       return value
     /*const output = convert(input);
     const rounded = Math.round(output * 1000) / 1000;
     return rounded.toString();*/
   }
-  function  Round(val){
+  function  roundNumber(val){
     const rounded = parseFloat(Math.round(val)).toFixed(2);
     return rounded.toString();
   }
+
+  function  ceilNumber(val){
+    const rounded = parseFloat(Math.ceil(val));
+    return rounded.toString();
+  }
+
 
   function convertKtoC(temp){
    temp = temp - 273.15
    console.log("convertKtoC" + temp)
    return temp
+  }
+
+  export function difference(a, b) {
+    return Math.abs(a - b);
   }
 
   function convertFtoC(temp){

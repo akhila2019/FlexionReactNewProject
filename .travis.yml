@@ -1,17 +1,9 @@
 language: node_js
 node_js:
-- 10.15.0
-cache: 
-   directories:
-  - node_modules
-
+  - "stable"
+cache:
+  directories:
+  - node_modules #Cache node_modules for faster builds
 script:
-  - npm test
-  - npm run build
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  on: 
-    branch: master
+  - npm test #Runs Tests
+  - npm run build #Creats a production build
