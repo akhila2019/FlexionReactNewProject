@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
  import {tryConvert, mapUnit, difference} from './Module'
  
   
@@ -49,7 +49,7 @@ import React, { Component } from 'react';
             let Unit = mapUnit( inputSplitArray[1] )
             console.log("Unit"+ Unit)
             console.log(Number.isNaN( inputSplitArray[0]))
-            if(inputSplitArray.length  !=2 ||Number.isNaN( inputSplitArray[0])){
+            if(inputSplitArray.length  !==2 ||Number.isNaN( inputSplitArray[0])){
               this.setState({correction : "Invalid"})
             }else if (Number.isNaN(studentRecord.studentInputUnit)){
               this.setState({correction : "Incorrect"})

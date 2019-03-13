@@ -21,10 +21,10 @@
     const rounded = Math.round(output * 1000) / 1000;
     return rounded.toString();*/
   }
-  function  roundNumber(val){
+  /*function  roundNumber(val){
     const rounded = parseFloat(Math.round(val)).toFixed(2);
     return rounded.toString();
-  }
+  }*/
 
   function  ceilNumber(val){
     const rounded = parseFloat(Math.ceil(val));
