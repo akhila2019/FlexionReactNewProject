@@ -1,30 +1,25 @@
 
-  export function tryConvert(value, convert) {
+  export function tryConvert(value, temperatureUnit) {
     const input = value;
-    console.log("inside tryconvert"+  convert)
+    console.log("inside tryconvert"+  temperatureUnit)
     console.log("inside tryconvert"+  input)
     if (Number.isNaN(input)) {
       return 'Invalid';
     }
-    if (convert ==='K'){
+    if (temperatureUnit ==='K'){
         const output=  convertKtoC(input)
         return ceilNumber(output)
-    }else if(convert === 'F'){
+    }else if(temperatureUnit === 'F'){
         const output= convertFtoC(input)
         return ceilNumber(output)
-    }else if (convert === 'R'){
+    }else if (temperatureUnit === 'R'){
        const output= convertRtoC(input)
        return ceilNumber(output)
     }else 
       return value
-    /*const output = convert(input);
-    const rounded = Math.round(output * 1000) / 1000;
-    return rounded.toString();*/
+  
   }
-  /*function  roundNumber(val){
-    const rounded = parseFloat(Math.round(val)).toFixed(2);
-    return rounded.toString();
-  }*/
+ 
 
   function  ceilNumber(val){
     const rounded = parseFloat(Math.ceil(val));
@@ -57,6 +52,7 @@
   }
 
   export function mapUnit(unit){
+  if(unit !== undefined){
     if(unit.trim().toLowerCase() === 'celsius'){
         return 'C'
     }else if(unit.trim().toLowerCase() === 'kelvin'){
@@ -67,7 +63,8 @@
         return 'R'
     }else 
         return 'Invalid'
-    
+   }else 
+        return 'Invalid'
 
   }
 
