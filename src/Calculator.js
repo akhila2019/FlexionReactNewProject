@@ -54,8 +54,7 @@ import React from 'react';
             e.preventDefault();
 
             if(this.validate()){
-            let convertedTemp_1 = "";
-            let convertedTemp_2 = "";
+           
             const record = {
                 input : this.state.input,                
                 studentResponse :this.state.studentResponse,
@@ -63,9 +62,7 @@ import React from 'react';
             }
             console.log(record)          
             const inputSplitArray = record.input.trim().split(" ")     
-            console.log( inputSplitArray[0]); 
-            console.log( inputSplitArray[1]);
-            console.log("length of the array "+ inputSplitArray.length)                 
+                         
             if(inputSplitArray.length ===2 ){  
                   let unit = mapUnit( inputSplitArray[1] )       
                   console.log("unit" + unit)
@@ -80,11 +77,9 @@ import React from 'react';
                   record.inputTemp= inputSplitArray[0]     
                   
                   const convertedTemp_1  =  tryConvert(record.inputTemp, unit)
-                  console.log("convertedTemp_1 "+ convertedTemp_1 )
-                  console.log("ceil convertedTemp_1 "+ Math.ceil(convertedTemp_1) )
+                 
                   const convertedTemp_2=   tryConvert(record.studentResponse, record.targetUnit)
-                  console.log("convertedTemp_2 "+ convertedTemp_2 )
-                  console.log("ceil convertedTemp_2 "+ Math.ceil(convertedTemp_2) )
+                 
                       if(convertedTemp_1 ==='Invalid'){
                         this.setState({correction : "Invalid"})
                       }else if(difference(convertedTemp_1,convertedTemp_2) <=2){
