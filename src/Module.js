@@ -22,7 +22,7 @@
  
 
   function  ceilNumber(val){
-    const rounded = parseFloat(Math.ceil(val));
+    const rounded = parseFloat(Math.round(val,1));
     return rounded.toString();
   }
 

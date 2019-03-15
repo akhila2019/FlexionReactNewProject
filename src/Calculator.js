@@ -19,7 +19,7 @@ import React from 'react';
       this.onKeyPress = this.onKeyPress.bind(this);
     }
    
-
+    //onChange of Input this event is called
     onChange(e){
 
         e.preventDefault();
@@ -32,28 +32,16 @@ import React from 'react';
          onKeyPress(e){
              console.log("Inside onKeyPress")
              if(e.keyCode===8 || e.keyCode===46){
-            this.setState({correction : " "})
+            this.setState({correction : " ",
+               message : ""    })
              }
          }
-         validate(){
-          if(this.state.input === "" || this.state.studentResponse === ""||this.state.studentResponse ==="" ){
-            this.setState({error : true      ,
-             message : "Please enter Input Temperature in form of Value Unit, for example 84.2 Fahrenheit" ,
-             correction : ""
-             })
-            return false
-          }else{
-            this.setState({error : false      ,
-              message : ""  })
-            return true
-          }
-
-         }
+        
   
          onSubmit(e){
             e.preventDefault();
 
-            if(this.validate()){
+            
            
             const record = {
                 input : this.state.input,                
@@ -63,35 +51,38 @@ import React from 'react';
             console.log(record)          
             const inputSplitArray = record.input.trim().split(" ")     
                          
-            if(inputSplitArray.length ===2 ){  
-                  let unit = mapUnit( inputSplitArray[1] )       
+            if(inputSplitArray.length ===2 ){  //checking the length of the first input
+                  let unit = mapUnit( inputSplitArray[1] )     //mapping to scale based on the user input   
                   console.log("unit" + unit)
               
                   if (Number.isNaN( inputSplitArray[0])|| unit === "Invalid" ){
                    
-                    this.setState({correction : "Invalid"})
+                    this.setState({correction : "Invalid",
+                    message : "Please enter Input Temperature in form of Value Unit, for example 84.2 Fahrenheit" })
                   }
                   else if (Number.isNaN(record.targetUnit)){
-                    this.setState({correction : "Incorrect"})
+                    this.setState({correction : "incorrect"})
                   }else {
                   record.inputTemp= inputSplitArray[0]     
                   
-                  const convertedTemp_1  =  tryConvert(record.inputTemp, unit)
+                  const convertedTemp_1  =  tryConvert(record.inputTemp, unit) //converting temperature to relavant unit
                  
                   const convertedTemp_2=   tryConvert(record.studentResponse, record.targetUnit)
-                 
+                  console.log("convertedTemp_1" + convertedTemp_1)
+                  console.log("convertedTemp_2" + convertedTemp_2)
                       if(convertedTemp_1 ==='Invalid'){
                         this.setState({correction : "Invalid"})
-                      }else if(difference(convertedTemp_1,convertedTemp_2) <=2){
+                      }else if(difference(convertedTemp_1,convertedTemp_2) <1){
                         this.setState({correction : "Correct"})
                       }else{
-                        this.setState({correction : "InCorrect"})
+                        this.setState({correction : "inCorrect"})
                       }
                   }
             }else{
-                  this.setState({correction : "Invalid"})
+                  this.setState({correction : "Invalid",
+                  message : "Please enter Input Temperature in form of Value Unit, for example 84.2 Fahrenheit" })
             }
-          }
+         
           }
   
     render() {
@@ -107,11 +98,11 @@ import React from 'react';
                       <div class="form-group">
                           <label class="control-label form-control-lg" for="input">Input Temperature</label>
                           <input  class="form-control" type="text" id="input" name="input" placeholder="Input Temperature (VALUE UNIT for example 84.2 Fahrenheit)" value = {this.state.input} 
-                          onChange={this.onChange} onKeyUp={this.onKeyPress}/>
+                          onChange={this.onChange} onKeyUp={this.onKeyPress} required/>
                       </div>
                       <div class="form-group">
                         <label class="control-label form-control-lg" for="input">Target Units</label>
-                          <select class="form-control " placeholder="Target Units" name="targetUnit" id="Target Units"value = {this.state.targetUnit} onChange={this.onChange} onKeyUp={this.onKeyPress}> 
+                          <select class="form-control " placeholder="Target Units" name="targetUnit" id="Target Units"value = {this.state.targetUnit} onChange={this.onChange} onKeyUp={this.onKeyPress} required> 
                               <option value="">Select Unit</option>
                               <option value="K">Kelvin</option>
                               <option value="C">Celsius</option>
@@ -120,13 +111,15 @@ import React from 'react';
                           </select>
                       </div>
                       <div class="form-group">
-                          <label class="control-label form-control-lg" for="Student Input">Student Input</label>
-                          <input type="text" class="form-control " placeholder="Student Response" name="studentResponse"id="studentResponse" value = {this.state.studentResponse} onChange={this.onChange} onKeyUp={this.onKeyPress}/>
+                          <label class="control-label form-control-lg" for="Student Input">Student Response</label>
+                          <input type="text" class="form-control " placeholder="Student Response" name="studentResponse"id="studentResponse" value = {this.state.studentResponse} onChange={this.onChange} onKeyUp={this.onKeyPress} required/>
                       </div>                     
                       
                       <input type="submit" class="btn btn-primary btn-block mt-4" value="Validate" />
                   </form>
+                  <div class="align-middle  mx-auto">
                      <p  class="font-weight-bold display-8 text-center">{this.state.message} </p>
+                     </div>
                     <div class="align-middle  mx-auto">
                       <p  class="font-weight-bold display-4 text-center">{this.state.correction} </p>
                     </div>
