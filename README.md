@@ -17,7 +17,7 @@ Install [git](https://git-scm.com/)
 
 #### Navigate to cloned directory's app subdirectory
 
-`cd FelxionReactApp`
+`cd FelxionReactProject`
 
 The main files are Calcuator.js , Module.js  where Calculator.js is the child component of App.
 
