@@ -1,5 +1,5 @@
 # Temperature Unit-conversion Worksheets Evaluator
- This app is a worksheet evaluator for which validates the student response to the teacher input based on the selected target unit , If matches gives a correct and unmatched gives incorrect and invalid for irrelevant entry.
+ This app is a worksheet evaluator which validates the student response to the teacher input based on the selected target unit. If the student response matches gives message as correct, unmatched gives incorrect and invalid for irrelevant entry.
 
 
 ## Setup
