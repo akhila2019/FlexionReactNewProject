@@ -37,7 +37,7 @@
              }
          }
         
-  
+        //OnSubmit handles all the validation and throws Invalid, valid and incorrect messages
          onSubmit(e){
             e.preventDefault();
 
@@ -48,12 +48,12 @@
                 studentResponse :this.state.studentResponse,
                 targetUnit : this.state.targetUnit
             }
-            console.log(record)          
+            //console.log(record)          
             const inputSplitArray = record.input.trim().split(" ")     
                          
             if(inputSplitArray.length ===2 ){  //checking the length of the first input
                   let unit = mapUnit( inputSplitArray[1] )     //mapping to scale based on the user input   
-                  console.log("unit" + unit)
+                  //console.log("unit" + unit)
               
                   if (Number.isNaN( inputSplitArray[0])|| unit === "Invalid" ){
                    
@@ -68,8 +68,8 @@
                   const convertedTemp_1  =  tryConvert(record.inputTemp, unit) //converting temperature to relavant unit
                  
                   const convertedTemp_2=   tryConvert(record.studentResponse, record.targetUnit)
-                  console.log("convertedTemp_1" + convertedTemp_1)
-                  console.log("convertedTemp_2" + convertedTemp_2)
+                 // console.log("convertedTemp_1" + convertedTemp_1)
+                 // console.log("convertedTemp_2" + convertedTemp_2)
                       if(convertedTemp_1 ==='Invalid'){
                         this.setState({correction : "Invalid"})
                       }else if(difference(convertedTemp_1,convertedTemp_2) <1){

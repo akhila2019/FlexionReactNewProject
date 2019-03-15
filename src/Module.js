@@ -1,4 +1,5 @@
 
+  //converts temperature based on the unit
   export function tryConvert(value, temperatureUnit) {
     const input = value;
    // console.log("inside tryconvert"+  temperatureUnit)
@@ -8,20 +9,20 @@
     }
     if (temperatureUnit ==='K'){
         const output=  convertKtoC(input)
-        return ceilNumber(output)
+        return roundNumber(output)
     }else if(temperatureUnit === 'F'){
         const output= convertFtoC(input)
-        return ceilNumber(output)
+        return roundNumber(output)
     }else if (temperatureUnit === 'R'){
        const output= convertRtoC(input)
-       return ceilNumber(output)
+       return roundNumber(output)
     }else 
       return value
   
   }
  
-
-  function  ceilNumber(val){
+  //rounds number to one decimal
+  function  roundNumber(val){
     const rounded = parseFloat(Math.round(val,1));
     return rounded.toString();
   }
