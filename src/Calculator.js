@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
  import {tryConvert, mapUnit, difference} from './Module'
  
   
@@ -61,7 +61,7 @@ import React from 'react';
                     message : "Please enter Input Temperature in form of Value Unit, for example 84.2 Fahrenheit" })
                   }
                   else if (Number.isNaN(record.targetUnit)){
-                    this.setState({correction : "incorrect"})
+                    this.setState({correction : "Incorrect"})
                   }else {
                   record.inputTemp= inputSplitArray[0]     
                   
@@ -75,7 +75,7 @@ import React from 'react';
                       }else if(difference(convertedTemp_1,convertedTemp_2) <1){
                         this.setState({correction : "Correct"})
                       }else{
-                        this.setState({correction : "inCorrect"})
+                        this.setState({correction : "InCorrect"})
                       }
                   }
             }else{

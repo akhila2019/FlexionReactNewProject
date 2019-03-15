@@ -1,8 +1,8 @@
 
   export function tryConvert(value, temperatureUnit) {
     const input = value;
-    console.log("inside tryconvert"+  temperatureUnit)
-    console.log("inside tryconvert"+  input)
+   // console.log("inside tryconvert"+  temperatureUnit)
+    //console.log("inside tryconvert"+  input)
     if (Number.isNaN(input)) {
       return 'Invalid';
     }
@@ -29,7 +29,7 @@
 
   function convertKtoC(temp){
    temp = temp - 273.15
-   console.log("convertKtoC" + temp)
+  // console.log("convertKtoC" + temp)
    return temp
   }
 
@@ -40,14 +40,14 @@
   function convertFtoC(temp){
 
     temp = (temp - 32)  / 9.0 * 5.0
-    console.log("convertFtoC" + temp)
+   // console.log("convertFtoC" + temp)
     return temp
   }
 
   function convertRtoC(temp){
 
     temp = (temp - 491.67) * 5.0/9.0
-    console.log("convertRtoC" + temp)
+   // console.log("convertRtoC" + temp)
     return temp
   }
 
